@@ -28,7 +28,7 @@ namespace MyMinimalApi.Tests
                 
                                                     );
             Assert.Equal(HttpStatusCode.OK, result.StatusCode);
-            Assert.Equal("\"Maarten Balliauw created.\"", await result.Content.ReadAsStringAsync());
+            Assert.Equal("\"Kalle Pelle created.\"", await result.Content.ReadAsStringAsync());
         }
 
         [Fact]
