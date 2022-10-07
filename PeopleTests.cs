@@ -14,7 +14,6 @@ namespace MyMinimalApi.Tests
         [Fact]
         public async Task CreatePerson()
         {
-
             //create an in-memory HTTP client 
             await using var application = new WebApplicationFactory<Program>();
             var client = application.CreateClient();
@@ -30,12 +29,15 @@ namespace MyMinimalApi.Tests
             Assert.Equal(HttpStatusCode.OK, result.StatusCode);
             Assert.Equal("\"Kalle Pelle created.\"", await result.Content.ReadAsStringAsync());
         }
+        
 
         [Fact]
         public async Task CreatePersonValidatesObject()
         {
             await using var application = new WebApplicationFactory<Program>();
             var client = application.CreateClient();
+            
+            //send empty .json payload
             var result = await client.PostAsJsonAsync("/people", new Person());
             Assert.Equal(HttpStatusCode.OK, result.StatusCode);
 
